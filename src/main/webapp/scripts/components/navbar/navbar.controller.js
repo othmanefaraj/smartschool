@@ -10,4 +10,5 @@ angular.module('smartschoolApp')
             Auth.logout();
             $state.go('home');
         };
+
     });

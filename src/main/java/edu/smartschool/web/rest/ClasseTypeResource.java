@@ -35,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class ClasseTypeResource {
 
     private final Logger log = LoggerFactory.getLogger(ClasseTypeResource.class);
-        
+
     @Inject
     private ClasseTypeRepository classeTypeRepository;
-    
+
     @Inject
     private ClasseTypeSearchRepository classeTypeSearchRepository;
-    
+
     /**
      * POST  /classeTypes -> Create a new classeType.
      */
@@ -54,7 +54,28 @@ public class ClasseTypeResource {
         if (classeType.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("classeType", "idexists", "A new classeType cannot already have an ID")).body(null);
         }
+        if (classeTypeRepository.findOneByIntitule(classeType.getIntitule()).isPresent()) {
+            return ResponseEntity.badRequest()
+                .headers(HeaderUtil.createFailureAlert("ClasseType " + classeType.getIntitule() + "exists ( Intitule )", "Classe-Type "+classeType.getIntitule()+" already exists  ( Intitule )", "Classe Type (" + classeType.getIntitule() + ") already exists"))
+                .body(null);
+        }
+        List<ClasseType> classeTypes = classeTypeRepository.findAll();
+        for(ClasseType ct: classeTypes){
+            log.debug("Chercher si la classe type {} existe", ct.getIntitule());
+            if (classeType.getTypeEnseignement()==ct.getTypeEnseignement() &&
+                classeType.getCycle()==ct.getCycle() &&
+                classeType.getNiveau()==ct.getNiveau() &&
+                classeType.getFiliere()==ct.getFiliere() &&
+                classeType.getSerie()==ct.getSerie() &&
+                classeType.getOptionn()==ct.getOptionn()){
+                return ResponseEntity.badRequest()
+                    .headers(HeaderUtil.createFailureAlert("ClasseType " + classeType.getIntitule() + "exists ( Combinaison )", "Classe-Type "+classeType.getIntitule()+" already exists ( Combinaison )", "Classe Type (" + classeType.getIntitule() + ") already exists"))
+                    .body(null);
+            }
+        }
+
         ClasseType result = classeTypeRepository.save(classeType);
+
         classeTypeSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/classeTypes/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("classeType", result.getId().toString()))
@@ -73,6 +94,26 @@ public class ClasseTypeResource {
         if (classeType.getId() == null) {
             return createClasseType(classeType);
         }
+        List<ClasseType> classeTypes = classeTypeRepository.findAll();
+        for(ClasseType ct: classeTypes){
+            log.debug("Chercher si la classe type {} existe", ct.getIntitule());
+            if(classeType.getIntitule().equals(ct.getIntitule()) && classeType.getId() != ct.getId()){
+                return ResponseEntity.badRequest()
+                    .headers(HeaderUtil.createFailureAlert("ClasseType " + classeType.getIntitule() + "exists ( Intitule )", "Classe-Type "+classeType.getIntitule()+" already exists  ( Intitule )", "Classe Type (" + classeType.getIntitule() + ") already exists"))
+                    .body(null);
+            }
+            if (classeType.getTypeEnseignement()==ct.getTypeEnseignement() &&
+                classeType.getCycle()==ct.getCycle() &&
+                classeType.getNiveau()==ct.getNiveau() &&
+                classeType.getFiliere()==ct.getFiliere() &&
+                classeType.getSerie()==ct.getSerie() &&
+                classeType.getOptionn()==ct.getOptionn() &&
+                classeType.getId() != ct.getId()){
+                return ResponseEntity.badRequest()
+                    .headers(HeaderUtil.createFailureAlert("ClasseType " + classeType.getIntitule() + "exists ( Combinaison )", "Classe-Type "+classeType.getIntitule()+" already exists ( Combinaison )", "Classe Type (" + classeType.getIntitule() + ") already exists"))
+                    .body(null);
+            }
+        }
         ClasseType result = classeTypeRepository.save(classeType);
         classeTypeSearchRepository.save(result);
         return ResponseEntity.ok()
@@ -90,7 +131,7 @@ public class ClasseTypeResource {
     public ResponseEntity<List<ClasseType>> getAllClasseTypes(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of ClasseTypes");
-        Page<ClasseType> page = classeTypeRepository.findAll(pageable); 
+        Page<ClasseType> page = classeTypeRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/classeTypes");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

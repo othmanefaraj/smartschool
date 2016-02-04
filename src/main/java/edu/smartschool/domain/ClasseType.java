@@ -16,7 +16,7 @@ import java.util.Objects;
  * A ClasseType.
  */
 @Entity
-@Table(name = "classe_type",uniqueConstraints = @UniqueConstraint(columnNames = {"type_enseignement_id","cycle_id","intitule"}))
+@Table(name = "classe_type")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "classetype")
 public class ClasseType implements Serializable {
@@ -26,7 +26,7 @@ public class ClasseType implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "intitule", nullable = false)
+    @Column(name = "intitule",unique = true,nullable = false)
     private String intitule;
 
     @Column(name = "date_creation")
