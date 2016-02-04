@@ -1,0 +1,25 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "classeType",
+            "otherEntityName": "classeType",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "serie"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "intitule",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160203171134",
+    "dto": "no",
+    "service": "no",
+    "pagination": "pagination"
+}
