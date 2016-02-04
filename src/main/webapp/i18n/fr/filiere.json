@@ -1,0 +1,24 @@
+{
+    "smartschoolApp": {
+        "filiere" : {
+            "home": {
+                "title": "Filieres",
+                "createLabel": "Créer un nouveau Filiere",
+                "createOrEditLabel": "Créer ou éditer un Filiere",
+                "search": "Search for Filiere"
+            },
+            "created": "Un nouveau Filiere a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Filiere avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Filiere avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Filiere {{ id }} ?"
+            },
+            "detail": {
+                "title": "Filiere"
+            },
+            "intitule": "Intitule",
+            "classeType": "ClasseType"
+        }
+    }
+}
+
