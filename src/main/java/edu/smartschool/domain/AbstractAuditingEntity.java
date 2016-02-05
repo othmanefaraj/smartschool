@@ -30,23 +30,19 @@ public abstract class AbstractAuditingEntity implements Serializable {
     @CreatedBy
     @NotNull
     @Column(name = "created_by", nullable = false, length = 50, updatable = false)
-    @JsonIgnore
     private String createdBy;
 
     @CreatedDate
     @NotNull
     @Column(name = "created_date", nullable = false)
-    @JsonIgnore
     private ZonedDateTime createdDate = ZonedDateTime.now();
 
     @LastModifiedBy
     @Column(name = "last_modified_by", length = 50)
-    @JsonIgnore
     private String lastModifiedBy;
 
     @LastModifiedDate
     @Column(name = "last_modified_date")
-    @JsonIgnore
     private ZonedDateTime lastModifiedDate = ZonedDateTime.now();
 
     public String getCreatedBy() {
@@ -80,4 +76,5 @@ public abstract class AbstractAuditingEntity implements Serializable {
     public void setLastModifiedDate(ZonedDateTime lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }
+
 }

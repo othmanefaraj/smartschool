@@ -49,7 +49,7 @@ public class ClasseTypeResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<ClasseType> createClasseType(@Valid @RequestBody ClasseType classeType) throws URISyntaxException {
+    public ResponseEntity<ClasseType> createClasseType(@RequestBody ClasseType classeType) throws URISyntaxException {
         log.debug("REST request to save ClasseType : {}", classeType);
         if (classeType.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("classeType", "idexists", "A new classeType cannot already have an ID")).body(null);
@@ -89,7 +89,7 @@ public class ClasseTypeResource {
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<ClasseType> updateClasseType(@Valid @RequestBody ClasseType classeType) throws URISyntaxException {
+    public ResponseEntity<ClasseType> updateClasseType(@RequestBody ClasseType classeType) throws URISyntaxException {
         log.debug("REST request to update ClasseType : {}", classeType);
         if (classeType.getId() == null) {
             return createClasseType(classeType);
