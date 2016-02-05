@@ -20,6 +20,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -35,13 +36,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class TypeEnseignementResource {
 
     private final Logger log = LoggerFactory.getLogger(TypeEnseignementResource.class);
-        
+
     @Inject
     private TypeEnseignementRepository typeEnseignementRepository;
-    
+
     @Inject
     private TypeEnseignementSearchRepository typeEnseignementSearchRepository;
-    
+
     /**
      * POST  /typeEnseignements -> Create a new typeEnseignement.
      */
@@ -49,8 +50,13 @@ public class TypeEnseignementResource {
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<TypeEnseignement> createTypeEnseignement(@Valid @RequestBody TypeEnseignement typeEnseignement) throws URISyntaxException {
+    public ResponseEntity<TypeEnseignement> createTypeEnseignement(@RequestBody TypeEnseignement typeEnseignement) throws URISyntaxException {
         log.debug("REST request to save TypeEnseignement : {}", typeEnseignement);
+        TypeEnseignement typeE = new TypeEnseignement();
+        log.debug("**************************************************************************");
+        log.debug("               GET CREATED BY   : {}",typeE.getCreatedBy());
+        log.debug("               GET CREATED DARE : {}",typeE.getCreatedDate());
+        log.debug("**************************************************************************");
         if (typeEnseignement.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("typeEnseignement", "idexists", "A new typeEnseignement cannot already have an ID")).body(null);
         }
@@ -90,7 +96,7 @@ public class TypeEnseignementResource {
     public ResponseEntity<List<TypeEnseignement>> getAllTypeEnseignements(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of TypeEnseignements");
-        Page<TypeEnseignement> page = typeEnseignementRepository.findAll(pageable); 
+        Page<TypeEnseignement> page = typeEnseignementRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/typeEnseignements");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

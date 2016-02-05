@@ -19,7 +19,7 @@ import java.util.Objects;
 @Table(name = "type_enseignement")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "typeenseignement")
-public class TypeEnseignement implements Serializable {
+public class TypeEnseignement extends AbstractAuditingEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +28,7 @@ public class TypeEnseignement implements Serializable {
     @NotNull
     @Column(name = "intitule", nullable = false)
     private String intitule;
-    
+
     @OneToMany(mappedBy = "typeEnseignement")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -45,7 +45,7 @@ public class TypeEnseignement implements Serializable {
     public String getIntitule() {
         return intitule;
     }
-    
+
     public void setIntitule(String intitule) {
         this.intitule = intitule;
     }
