@@ -67,7 +67,7 @@ jhipster:
     cache: # Hibernate 2nd level cache, used by CacheConfiguration
         timeToLiveSeconds: 3600
         ehcache:
-            maxBytesLocalHeap: 16M
+            maxBytesLocalHeap: 32M
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: smartSchool@localhost
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration

@@ -62,12 +62,7 @@ public class ClasseTypeResource {
         List<ClasseType> classeTypes = classeTypeRepository.findAll();
         for(ClasseType ct: classeTypes){
             log.debug("Chercher si la classe type {} existe", ct.getIntitule());
-            if (classeType.getTypeEnseignement()==ct.getTypeEnseignement() &&
-                classeType.getCycle()==ct.getCycle() &&
-                classeType.getNiveau()==ct.getNiveau() &&
-                classeType.getFiliere()==ct.getFiliere() &&
-                classeType.getSerie()==ct.getSerie() &&
-                classeType.getOptionn()==ct.getOptionn()){
+            if (getClasseTypeString(classeType).equals(getClasseTypeString(ct))){
                 return ResponseEntity.badRequest()
                     .headers(HeaderUtil.createFailureAlert("ClasseType " + classeType.getIntitule() + "exists ( Combinaison )", "Classe-Type "+classeType.getIntitule()+" already exists ( Combinaison )", "Classe Type (" + classeType.getIntitule() + ") already exists"))
                     .body(null);
@@ -102,12 +97,7 @@ public class ClasseTypeResource {
                     .headers(HeaderUtil.createFailureAlert("ClasseType " + classeType.getIntitule() + "exists ( Intitule )", "Classe-Type "+classeType.getIntitule()+" already exists  ( Intitule )", "Classe Type (" + classeType.getIntitule() + ") already exists"))
                     .body(null);
             }
-            if (classeType.getTypeEnseignement()==ct.getTypeEnseignement() &&
-                classeType.getCycle()==ct.getCycle() &&
-                classeType.getNiveau()==ct.getNiveau() &&
-                classeType.getFiliere()==ct.getFiliere() &&
-                classeType.getSerie()==ct.getSerie() &&
-                classeType.getOptionn()==ct.getOptionn() &&
+            if (getClasseTypeString(classeType).equals(getClasseTypeString(ct)) &&
                 classeType.getId() != ct.getId()){
                 return ResponseEntity.badRequest()
                     .headers(HeaderUtil.createFailureAlert("ClasseType " + classeType.getIntitule() + "exists ( Combinaison )", "Classe-Type "+classeType.getIntitule()+" already exists ( Combinaison )", "Classe Type (" + classeType.getIntitule() + ") already exists"))
@@ -119,6 +109,24 @@ public class ClasseTypeResource {
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("classeType", classeType.getId().toString()))
             .body(result);
+    }
+
+    public String getClasseTypeString(ClasseType classeType){
+        String string = "";
+        if(classeType.getTypeEnseignement() != null)
+            string = string + classeType.getTypeEnseignement().getIntitule();
+        if(classeType.getCycle() != null)
+            string = string + classeType.getCycle().getIntitule();
+        if(classeType.getNiveau() != null)
+            string = string + classeType.getNiveau().getIntitule();
+        if(classeType.getFiliere() != null)
+            string = string + classeType.getFiliere().getIntitule();
+        if(classeType.getSerie() != null)
+            string = string + classeType.getSerie().getIntitule();
+        if(classeType.getOptionn() != null)
+            string = string + classeType.getOptionn().getIntitule();
+
+        return string;
     }
 
     /**
