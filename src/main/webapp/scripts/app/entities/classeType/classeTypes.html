@@ -30,9 +30,7 @@ class="hidden-xs"                        translate="smartschoolApp.classeType.ho
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
-                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="intitule"><span translate="smartschoolApp.classeType.intitule">Intitule</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="dateCreation"><span translate="smartschoolApp.classeType.dateCreation">DateCreation</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="typeEnseignement.id"><span translate="smartschoolApp.classeType.typeEnseignement">typeEnseignement</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="cycle.id"><span translate="smartschoolApp.classeType.cycle">cycle</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="niveau.id"><span translate="smartschoolApp.classeType.niveau">niveau</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -43,10 +41,9 @@ class="hidden-xs"                        translate="smartschoolApp.classeType.ho
                 </tr>
             </thead>
             <tbody>
+
                 <tr ng-repeat="classeType in classeTypes track by classeType.id">
-                    <td><a ui-sref="classeType.detail({id:classeType.id})">{{classeType.id}}</a></td>
                     <td>{{classeType.intitule}}</td>
-                        <td>{{classeType.dateCreation | date:'mediumDate'}}</td>
                     <td>
                         <a ui-sref="typeEnseignement.detail({id:classeType.typeEnseignement.id})">{{classeType.typeEnseignement.intitule}}</a>
                     </td>

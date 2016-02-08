@@ -36,4 +36,25 @@
     <cache name="edu.smartschool.domain.User.persistentTokens"
            timeToLiveSeconds="3600">
     </cache>
+    <cache name="edu.smartschool.domain.ClasseType"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="edu.smartschool.domain.TypeEnseignement"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="edu.smartschool.domain.Cycle"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="edu.smartschool.domain.Filiere"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="edu.smartschool.domain.Optionn"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="edu.smartschool.domain.Niveau"
+           timeToLiveSeconds="3600">
+    </cache>
+    <cache name="edu.smartschool.domain.Serie"
+           timeToLiveSeconds="3600">
+    </cache>
     </ehcache>

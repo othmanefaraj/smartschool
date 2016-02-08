@@ -18,6 +18,40 @@
                     <span class="form-control-static">{{typeEnseignement.intitule}}</span>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <span translate="user-management.createdBy">CreatedBy</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{typeEnseignement.createdBy}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="user-management.createdDate">CreatedDate</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control"
+                           value="{{typeEnseignement.createdDate | date:'dd/MM/yy HH:mm' }}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="user-management.lastModifiedBy">LastModifiedBy</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{typeEnseignement.lastModifiedBy}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="user-management.lastModifiedDate">LastCreatedDate</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control"
+                           value="{{typeEnseignement.lastModifiedDate | date:'dd/MM/yy HH:mm'}}" readonly>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+   <changeSet author="OTHF (generated)" id="1454667321939-1">
+      <addColumn tableName="type_enseignement">
+         <column name="created_by" type="varchar(50)">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="OTHF (generated)" id="1454667321939-2">
+      <addColumn tableName="type_enseignement">
+         <column name="created_date" type="datetime">
+            <constraints nullable="false"/>
+         </column>
+      </addColumn>
+   </changeSet>
+   <changeSet author="OTHF (generated)" id="1454667321939-3">
+      <addColumn tableName="type_enseignement">
+         <column name="last_modified_by" type="varchar(50)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="OTHF (generated)" id="1454667321939-4">
+      <addColumn tableName="type_enseignement">
+         <column name="last_modified_date" type="datetime"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="OTHF (generated)" id="1454667321939-5">
+      <addUniqueConstraint columnNames="intitule"
+                           constraintName="UC_CLASSE_TYPEINTITULE_COL"
+                           tableName="classe_type"/>
+   </changeSet>
+</databaseChangeLog>
