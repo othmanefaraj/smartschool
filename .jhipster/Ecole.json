@@ -1,0 +1,80 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "pays",
+            "otherEntityName": "pays",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "region",
+            "otherEntityName": "region",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "ville",
+            "otherEntityName": "ville",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 5,
+            "relationshipName": "classeType",
+            "otherEntityName": "classeType",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "intitule",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "adresse",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "siteWeb",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "categorie",
+            "fieldType": "Categorie",
+            "fieldValues": "Public,Privee,SemiPublic"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "gpsLatitude",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "gpsLongitude",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160208125847",
+    "dto": "no",
+    "service": "no",
+    "pagination": "pagination"
+}

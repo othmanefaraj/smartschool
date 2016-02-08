@@ -1,0 +1,83 @@
+<div>
+    <h2 translate="smartschoolApp.ecole.home.title">Ecoles</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="ecole.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span
+class="hidden-xs"                        translate="smartschoolApp.ecole.home.createLabel">Create new Ecole
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'smartschoolApp.ecole.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="intitule">Nom<span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="categorie"><span translate="smartschoolApp.ecole.categorie">Categorie</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.id">Directeur<span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pays.id"><span translate="smartschoolApp.ecole.pays">pays</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ville.id"><span translate="smartschoolApp.ecole.ville">ville</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ecole in ecoles track by ecole.id">
+                    <td>{{ecole.intitule}}</td>
+                    <td translate="{{'smartschoolApp.Categorie.' + ecole.categorie}}">{{ecole.categorie}}</td>
+                    <td>
+                        {{ecole.user.firstName}} {{ecole.user.lastName}}
+                    </td>
+                    <td>
+                        <a ui-sref="pays.detail({id:ecole.pays.id})">{{ecole.pays.intitule}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="ville.detail({id:ecole.ville.id})">{{ecole.ville.intitule}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="ecole.detail({id:ecole.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="ecole.edit({id:ecole.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="ecole.delete({id:ecole.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

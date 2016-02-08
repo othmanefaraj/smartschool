@@ -1,0 +1,32 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "ecole",
+            "otherEntityName": "ecole",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "pays"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "region",
+            "otherEntityName": "region",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "pays"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "intitule",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160208122110",
+    "dto": "no",
+    "service": "no",
+    "pagination": "pagination"
+}

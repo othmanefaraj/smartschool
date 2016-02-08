@@ -1,0 +1,112 @@
+
+<div>
+    <h2><span translate="smartschoolApp.ecole.detail.title">Ecole</span> {{ecole.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.ecole.intitule">Intitule</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{ecole.intitule}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.ecole.adresse">Adresse</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{ecole.adresse}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.ecole.siteWeb">SiteWeb</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{ecole.siteWeb}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.ecole.categorie">Categorie</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'smartschoolApp.Categorie.' + ecole.categorie}}">{{ecole.categorie}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.ecole.gpsLatitude">GpsLatitude</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{ecole.gpsLatitude}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.ecole.gpsLongitude">GpsLongitude</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{ecole.gpsLongitude}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.ecole.user">user</span>
+                </td>
+                <td>
+                    {{ecole.user.id}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.ecole.pays">pays</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="pays.detail({id:ecole.pays.id})">{{ecole.pays.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.ecole.region">region</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="region.detail({id:ecole.region.id})">{{ecole.region.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.ecole.ville">ville</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="ville.detail({id:ecole.ville.id})">{{ecole.ville.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.ecole.classeType">classeType</span>
+                </td>
+                <td>
+                    <span ng-repeat="classeType in ecole.classeTypes">
+                        <a class="form-control-static" ui-sref="classeType.detail({id: {{classeType.id}}})">{{classeType.id}}</a>{{$last ? '' : ', '}}
+                    </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

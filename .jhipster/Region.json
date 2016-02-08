@@ -1,0 +1,39 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "pays",
+            "otherEntityName": "pays",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "ville",
+            "otherEntityName": "ville",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "region"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "ecole",
+            "otherEntityName": "ecole",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "region"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "intitule",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160208122257",
+    "dto": "no",
+    "service": "no",
+    "pagination": "pagination"
+}
