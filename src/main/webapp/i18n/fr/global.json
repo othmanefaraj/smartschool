@@ -14,6 +14,10 @@
                 "serie": "Serie",
                 "optionn": "Optionn",
                 "classeType": "ClasseType",
+                "pays": "Pays",
+                "region": "Region",
+                "ville": "Ville",
+                "ecole": "Ecole",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

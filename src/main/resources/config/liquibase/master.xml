@@ -16,6 +16,9 @@
     <include file="classpath:config/liquibase/changelog/20160203180143_changelog.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160204104220_changelog.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20160204191025_changelog.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160205174919_changelog.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160208122110_added_entity_Pays.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160208122257_added_entity_Region.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160208122400_added_entity_Ville.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20160208125847_added_entity_Ecole.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
 </databaseChangeLog>
